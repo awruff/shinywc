@@ -293,6 +293,8 @@ allow_for_sandbox(const struct wlr_security_context_v1_state *security_state,
 		"xdg_wm_dialog_v1",
 		/* plus */
 		"wp_alpha_modifier_v1",
+		"wp_fifo_manager_v1",
+		"wp_pointer_warp_v1",
 		"wp_color_manager_v1",
 		"wp_color_representation_manager_v1",
 		"wp_linux_drm_syncobj_manager_v1",
@@ -797,6 +799,8 @@ server_init(void)
 			server.wl_display, LAB_EXT_FOREIGN_TOPLEVEL_LIST_VERSION);
 
 	wlr_alpha_modifier_v1_create(server.wl_display);
+	fifo_manager_create(server.wl_display);
+	pointer_warp_manager_create(server.wl_display);
 
 	session_lock_init();
 

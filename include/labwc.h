@@ -13,6 +13,7 @@
 #define XCURSOR_SIZE 24
 
 struct wlr_xdg_popup;
+struct wlr_output;
 
 enum input_mode {
 	LAB_INPUT_STATE_PASSTHROUGH = 0,
@@ -451,6 +452,11 @@ bool edge_from_cursor(struct seat *seat, struct output **dest_output,
 	enum lab_edge *edge1, enum lab_edge *edge2);
 
 void handle_tearing_new_object(struct wl_listener *listener, void *data);
+
+void fifo_manager_create(struct wl_display *display);
+void fifo_output_frame(struct wlr_output *output);
+
+void pointer_warp_manager_create(struct wl_display *display);
 
 void server_init(void);
 void server_start(void);

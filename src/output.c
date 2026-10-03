@@ -279,6 +279,8 @@ handle_output_frame(struct wl_listener *listener, void *data)
 	struct timespec now = { 0 };
 	clock_gettime(CLOCK_MONOTONIC, &now);
 	wlr_scene_output_send_frame_done(output->scene_output, &now);
+
+	fifo_output_frame(output->wlr_output);
 }
 
 static void
